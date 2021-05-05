@@ -2,6 +2,11 @@
 
 A new Flutter application.
 
+Page 1
+
+![mainPage](https://user-images.githubusercontent.com/75145283/117213766-47f75280-ae11-11eb-80dc-8303420cc498.jpg)
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
