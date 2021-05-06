@@ -54,6 +54,9 @@ flutter:
      - images/icon4.jpg
      - images/icon5.jpg
      - images/icon6.jpg
+     - images/alerticon.jpg
+     - images/alerticon1.jpg
+     - images/gifticon.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

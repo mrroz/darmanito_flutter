@@ -1,8 +1,9 @@
 
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
+import 'package:darmanito/alert.dart';
 import 'package:flutter/material.dart';
+
 
 void main() {
   runApp(MyApp());}
@@ -35,15 +36,15 @@ Color greenColor =Color(0xff01de9a);
   @override
   Widget build(BuildContext context) {
 
-    var he = MediaQuery.of(context).size.height;
     var wi = MediaQuery.of(context).size.width;
 
                           /////////////// main
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: _myAppbar(wi),
-      body: Column(
+      body: ListView(
         children: [
+
           _topImageTitle(wi),
           _bottomMenu(wi)
 
@@ -62,7 +63,7 @@ Color greenColor =Color(0xff01de9a);
   //////////////widgets
 
 
-  //1.Appbar
+  //Appbar
   Widget _myAppbar(wi){
     return AppBar(
       elevation: 0,
@@ -86,7 +87,14 @@ Color greenColor =Color(0xff01de9a);
       leading: Container(
         margin: new EdgeInsets.all(wi*.02),
         child: Stack(children: [
-          Align(child:Icon(Icons.notifications_none,color: Colors.blue,size:wi*.09 ,) ,alignment: Alignment.center,),
+          Align(child:GestureDetector(
+            onTap: ()=>Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Alert()),
+            ),
+              child: Icon(Icons.notifications_none,color: Colors.blue,size:wi*.09 ,)) ,alignment: Alignment.center,),
+
+
           Align(child:Icon(Icons.circle,color: Colors.red,size:wi*.048 ,) ,alignment: Alignment.topRight,),
 
         ],),),
@@ -179,61 +187,6 @@ Color greenColor =Color(0xff01de9a);
   }
 
 
-  Widget _bannerItem(wi,Widget image,Widget banner){
-    return Container(
-      width: wi*.3,
-      child: Stack(children: [
-
-          Container(
-          margin:EdgeInsets.only( top: 20),
-            child: _menuItem(wi,image),),
-
-          Container(child: banner),
-
-
-      ],),
-    );
-  }
-
-
-  Widget _banner(wi){
-    return Container(
-      margin: new EdgeInsets.only( left: wi*.08),
-      child: Center(child: Text('به زودی',style: TextStyle(fontWeight: FontWeight.w900),)),
-      width: wi*.2,
-      height: wi*.07,
-      decoration: BoxDecoration(
-        color: Colors.amberAccent,
-        borderRadius:BorderRadius.all(Radius.circular(wi*.025))
-
-    ),
-    );
-  }
-
-
-  Widget _menuItem(wi,image){
-    return Container(
-      margin:new EdgeInsets.only(left: wi*.053,bottom: wi*.08) ,
-      child: Padding(
-        padding: new EdgeInsets.all(wi*.02),
-        child:image,
-          // Image.asset('images/icon1.jpg')
-      ),
-      width: wi*.26,
-      decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black12.withOpacity(0.1),
-              spreadRadius: 2,
-              blurRadius: 2,
-              offset: Offset(0, 0), // changes position of shadow
-            ),
-          ],
-          color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(wi*.05))
-      ),
-    );
-  }
 
   //1.sub widget of _bottomMenu
   Widget _bottomTitle(wi){
@@ -256,16 +209,63 @@ Color greenColor =Color(0xff01de9a);
     );
   }
 
-  Widget _menus(wi){
-    return Align(
-      alignment: Alignment.topRight,
-      child: Container(
-        color: Colors.red,
-        width: wi*.05,
-        height: wi*.01,
+
+//2.sub widget of _bottomMenu
+  Widget _bannerItem(wi,Widget image,Widget banner){
+    return Container(
+      width: wi*.3,
+      child: Stack(children: [
+        Container(
+          margin:EdgeInsets.only( top: 20),
+          child: _menuItem(wi,image),),
+        Container(child: banner),
+      ],),
+    );
+  }
+
+  //1.sub widget of _bannerItem
+  Widget _banner(wi){
+    return Container(
+      margin: new EdgeInsets.only( left: wi*.08),
+      child: Center(child: Text('به زودی',style: TextStyle(fontWeight: FontWeight.w900),)),
+      width: wi*.2,
+      height: wi*.07,
+      decoration: BoxDecoration(
+          color: Colors.amberAccent,
+          borderRadius:BorderRadius.all(Radius.circular(wi*.025))
+        //morteza roozbehi
+
       ),
     );
   }
+
+  // 2.sub widget of _bannerItem
+  Widget _menuItem(wi,image){
+    return Container(
+      margin:new EdgeInsets.only(left: wi*.053,bottom: wi*.08) ,
+      child: Padding(
+        padding: new EdgeInsets.all(wi*.02),
+        child:image,
+        // Image.asset('images/icon1.jpg')
+      ),
+      width: wi*.26,
+      decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12.withOpacity(0.1),
+              spreadRadius: 2,
+              blurRadius: 2,
+              offset: Offset(0, 0), // changes position of shadow
+            ),
+          ],
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(wi*.05))
+      ),
+    );
+  }
+
+
+
 
 
 }
