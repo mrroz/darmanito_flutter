@@ -2,6 +2,8 @@
 import 'dart:ui';
 
 import 'package:darmanito/alert.dart';
+import 'package:darmanito/appbar.dart';
+import 'package:darmanito/drawer.dart';
 import 'package:flutter/material.dart';
 
 
@@ -41,17 +43,20 @@ Color greenColor =Color(0xff01de9a);
                           /////////////// main
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: _myAppbar(wi),
-      body: ListView(
-        children: [
+      appBar: _myAppbar(wi,context),
+      endDrawer: MyDrawer(),
+      body: SafeArea(
+        child: ListView(
+          children: [
 
-          _topImageTitle(wi),
-          _bottomMenu(wi)
+            _topImageTitle(wi),
+            _bottomMenu(wi)
 
 
 
 
-        ],
+          ],
+        ),
       )
     );
   }
@@ -64,14 +69,18 @@ Color greenColor =Color(0xff01de9a);
 
 
   //Appbar
-  Widget _myAppbar(wi){
+  Widget _myAppbar(wi,context){
     return AppBar(
       elevation: 0,
       backgroundColor: Colors.transparent,
       actions: [
-        Container(
+        Builder(builder: (context)=>GestureDetector(
+          onTap: ()=>Scaffold.of(context).openEndDrawer(),
+          child: Container(
             margin: new EdgeInsets.only(right: wi*.03),
-          child: Image.asset('images/icon.png',width: wi*.11,),)
+            child: Image.asset('images/icon.png',width: wi*.11,),),
+        ) ,)
+
       ],
 
       title: Container(

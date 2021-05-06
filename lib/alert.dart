@@ -1,4 +1,7 @@
 
+import 'package:darmanito/appbar.dart';
+import 'package:darmanito/drawer.dart';
+import 'package:darmanito/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -32,6 +35,13 @@ class _AlertState extends State<Alert> {
     'images/alerticon1.jpg',
   ];
 
+  Color drawercolor=Colors.white;
+  Color greenColor =Color(0xff01de9a);
+  Color lightBackground = Color(0xff7c959c);
+
+
+
+
 
 
   @override
@@ -39,37 +49,53 @@ class _AlertState extends State<Alert> {
 
     var wi = MediaQuery.of(context).size.width;
     var he = MediaQuery.of(context).size.height;
+    var appbaSize =he*.1;
+    var heightAppBar = AppBar().preferredSize.height;
+    print(heightAppBar);
+    print('salllam');
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: _myAppbar(wi),
-      body: Container(
-        margin: new EdgeInsets.only(  top:wi*.07,),
-        width: wi,
-        height: he,
-        padding:  new EdgeInsets.only(right: wi*.03),
-        child: Center(child: ListView.builder(
-          itemCount: alert_title.length,
 
-            itemBuilder: (context,index)=>_alert_item(wi,index)
+    return (
+       Scaffold(
+          backgroundColor: Colors.white,
+          appBar: PreferredSize(
+            preferredSize:  Size.fromHeight(heightAppBar),
+            child:_myAppbar(wi,context),
+          ),
+          endDrawer: MyDrawer() ,
+          body: SafeArea(
+            child: Container(
+              margin: new EdgeInsets.only(  top:wi*.07,),
+              width: wi,
+              height: he,
+              padding:  new EdgeInsets.only(right: wi*.03),
+              child: Center(child: ListView.builder(
+                  itemCount: alert_title.length,
 
-        )),
+                  itemBuilder: (context,index)=>_alert_item(wi,index)
 
-      ),
+              )),
+
+            ),
+          ),
+        )
     );
   }
 
 
-
-  Widget _myAppbar(wi){
+  Widget _myAppbar(wi,context){
     return AppBar(
       centerTitle: true,
       elevation: 0,
       backgroundColor: Colors.transparent,
       actions: [
-        Container(
-          margin: new EdgeInsets.only(right: wi*.03),
-          child: Image.asset('images/icon.png',width: wi*.11,),)
+        Builder(builder: (context) =>GestureDetector(
+          onTap: ()=>Scaffold.of(context).openEndDrawer(),
+          child:Container(
+            margin: new EdgeInsets.only(right: wi*.03),
+            child: Image.asset('images/icon.png',width: wi*.11,),),)),
+
+
       ],
 
       title: Container(
@@ -120,5 +146,10 @@ class _AlertState extends State<Alert> {
               child: CircleAvatar(radius: wi*.09,child: Image.asset(alert_icons[index]),)),
         ],),);
   }
+
+
+
+
+
 }
 
