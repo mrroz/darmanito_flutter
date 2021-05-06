@@ -1,4 +1,5 @@
 import 'package:darmanito/factor.dart';
+import 'package:darmanito/factor2.dart';
 import 'package:darmanito/main.dart';
 import 'package:flutter/material.dart';
 
@@ -62,10 +63,10 @@ class _MyDrawerState extends State<MyDrawer> {
           Navigator.of(context).push(PageRouteBuilder(
             pageBuilder: (_,__,___)=>Sefaresh1(),transitionDuration: Duration(seconds: 0),));
         }
-        // if(id==1){
-        //   Navigator.pop(context);
-        //   Navigator.of(context).push(MaterialPageRoute(builder:(context)=>Profile()))
-        // }
+        if(id==1){
+          Navigator.pop(context);
+          Navigator.of(context).push(MaterialPageRoute(builder:(context)=>Sefaresh2()));
+        }
         // if(id==3){
         //   Navigator.pop(context);
         //   Navigator.of(context).push(MaterialPageRoute(builder:(context)=>Profile()))

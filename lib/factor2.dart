@@ -6,12 +6,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './accordion.dart';
 
-class Sefaresh1 extends StatefulWidget {
+class Sefaresh2 extends StatefulWidget {
   @override
   _Sefaresh1State createState() => _Sefaresh1State();
 }
 
-class _Sefaresh1State extends State<Sefaresh1> {
+class _Sefaresh1State extends State<Sefaresh2> {
 
   List farsi = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
 
@@ -32,10 +32,10 @@ class _Sefaresh1State extends State<Sefaresh1> {
             child: ListView(
               children: [
 
-               _data_address(wi,textStyleBold),
-               _productTitle(wi,textStyleBold,'محصولات سفارش'),
-                Accordion('کراتین مونوهیدرات ژن استار','۱',false,1),
-                Accordion('کراتین مونوهیدرات ژن استار','۱',true,2),
+                _data_address(wi,textStyleBold),
+                _productTitle(wi,textStyleBold,'محصولات سفارش'),
+                Accordion('کراتین مونوهیدرات ژن استار','۱',false,2),
+                Accordion('کراتین مونوهیدرات ژن استار','۱',true,1),
                 _panelMonyInfo(wi),
                 _productTitle(wi,textStyleBold,'توضیحات کلی سفارش'),
                 Container(
@@ -63,7 +63,7 @@ class _Sefaresh1State extends State<Sefaresh1> {
 
 
               ],),
-      )),
+          )),
 
     );
   }

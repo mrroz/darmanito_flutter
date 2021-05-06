@@ -4,8 +4,9 @@ class Accordion extends StatefulWidget {
   final String title;
   final String count;
   final bool open;
+  final int page;
 
-  Accordion(this.title,this.count,this.open);
+  Accordion(this.title,this.count,this.open,this.page);
   @override
   _AccordionState createState() => _AccordionState();
 
@@ -35,6 +36,40 @@ class _AccordionState extends State<Accordion> {
   Widget build(BuildContext context) {
     var wi = MediaQuery.of(context).size.width;
 
+
+
+    final  up_acc = widget.page==1?
+    Icon(Icons.keyboard_arrow_up_rounded , color: Colors.blue,size: wi*.08,):
+    Stack(children: [
+      Container(
+        width: wi*.08,
+        height: wi*.08,
+        decoration: BoxDecoration(
+          color: Colors.blue,
+            borderRadius: BorderRadius.all(Radius.circular(wi*.01))
+        ),
+      ),
+      Icon(Icons.keyboard_arrow_down_rounded,color: Colors.white,size: wi*.08,)
+    ],);
+
+    final  down_acc = widget.page==2?
+    Icon(Icons.keyboard_arrow_down , color: Colors.blue,size: wi*.08,):
+    Stack(children: [
+      Container(
+        width: wi*.08,
+        height: wi*.08,
+        decoration: BoxDecoration(
+            color: Colors.blue,
+            borderRadius: BorderRadius.all(Radius.circular(wi*.01))
+        ),
+      ),
+      Icon(Icons.keyboard_arrow_down,color: Colors.white,size: wi*.08,)
+    ],);
+
+
+
+
+
     return Directionality(textDirection: TextDirection.rtl, child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -54,8 +89,8 @@ class _AccordionState extends State<Accordion> {
         ListTile(
           title: Text(widget.title,textDirection: TextDirection.rtl),
           trailing: IconButton(
-            icon: Icon(
-                _showContent ? Icons.keyboard_arrow_up_rounded : Icons.keyboard_arrow_down_rounded ,color: Colors.blue,size: wi*.08,),
+            icon:
+                _showContent ?up_acc: down_acc,
             onPressed: () {
               setState(() {
 
