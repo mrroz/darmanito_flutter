@@ -6,6 +6,9 @@ Page 1
 
 ![mainPage](https://user-images.githubusercontent.com/75145283/117213766-47f75280-ae11-11eb-80dc-8303420cc498.jpg)
 
+page 2
+
+![page2](https://user-images.githubusercontent.com/75145283/117228600-97984700-ae2e-11eb-848c-28e4aa699562.jpg)
 
 ## Getting Started
 
